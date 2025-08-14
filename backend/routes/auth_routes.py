@@ -80,22 +80,25 @@ def register():
     """Kayıt"""
     try:
         data = request.get_json()
-        required = ['companyName', 'companyEmail', 'username', 'userEmail', 'password']
+        required = ['company_name', 'full_name', 'email', 'password']
         
         for field in required:
             if not data.get(field):
                 return jsonify({'error': f'{field} gerekli'}), 400
         
-        if Company.query.filter_by(email=data['companyEmail']).first():
-            return jsonify({'error': 'Bu şirket emaili zaten kayıtlı'}), 400
+        if Company.query.filter_by(name=data['company_name']).first():
+            return jsonify({'error': 'Bu şirket adı zaten kayıtlı'}), 400
         
-        company = Company(name=data['companyName'], email=data['companyEmail'])
+        if User.query.filter_by(email=data['email']).first():
+            return jsonify({'error': 'Bu email zaten kayıtlı'}), 400
+        
+        company = Company(name=data['company_name'])
         db.session.add(company)
         db.session.flush()
         
         user = User(
-            username=data['username'],
-            email=data['userEmail'],
+            full_name=data['full_name'],
+            email=data['email'],
             company_id=company.id,
             role='admin'
         )

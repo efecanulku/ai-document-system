@@ -112,14 +112,18 @@ def upload_documents():
             uploaded.append(doc.to_dict())
 
         db.session.commit()
-        return jsonify({'message': f'{len(uploaded)} dosya başarıyla yüklendi', 'files': uploaded}), 201
+        return jsonify({
+            'message': f'{len(uploaded)} dosya başarıyla yüklendi', 
+            'uploaded_count': len(uploaded),
+            'files': uploaded
+        }), 201
 
     except Exception:
         db.session.rollback()
         current_app.logger.exception("Upload error")
         return jsonify({'error':'Dosya yüklenirken hata oluştu'}), 500
 
-@documents_bp.route('', methods=['GET'])
+@documents_bp.route('/list', methods=['GET'])
 @token_required
 def list_documents():
     try:
@@ -129,7 +133,7 @@ def list_documents():
         current_app.logger.exception("List docs error")
         return jsonify({'error':'Belgeler alınırken hata oluştu'}), 500
 
-@documents_bp.route('/<int:doc_id>', methods=['DELETE'])
+@documents_bp.route('/delete/<int:doc_id>', methods=['DELETE'])
 @token_required
 def delete_document(doc_id:int):
     try:

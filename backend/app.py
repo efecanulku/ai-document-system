@@ -13,7 +13,12 @@ logger = logging.getLogger(__name__)
 
 # --- Flask & Config ---
 app = Flask(__name__)
-CORS(app, origins=['http://localhost:8000','http://127.0.0.1:8000'], supports_credentials=True)
+CORS(app, 
+     origins=['http://localhost:8000', 'http://127.0.0.1:8000'],
+     supports_credentials=True,
+     allow_headers=['Content-Type', 'Authorization', 'Access-Control-Allow-Credentials'],
+     methods=['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+     expose_headers=['Content-Type', 'Authorization'])
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -51,7 +56,7 @@ def create_tables():
         if not Company.query.first():
             c = Company(name='Demo Şirket', email='demo@company.com')
             db.session.add(c); db.session.commit()
-            u = User(username='admin', email='admin@demo.com', company_id=c.id, role='admin')
+            u = User(full_name='Admin User', email='admin@demo.com', company_id=c.id, role='admin')
             u.set_password('123456')
             db.session.add(u); db.session.commit()
             app.logger.info("Demo kullanıcı eklendi: admin@demo.com / 123456")

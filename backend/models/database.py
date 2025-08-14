@@ -9,8 +9,8 @@ class Company(db.Model):
     __tablename__ = 'companies'
     
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(100), nullable=False)
-    email = db.Column(db.String(120), unique=True, nullable=False)
+    name = db.Column(db.String(100), nullable=False, unique=True)
+    email = db.Column(db.String(120), unique=True, nullable=True)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     is_active = db.Column(db.Boolean, default=True)
     
@@ -32,7 +32,7 @@ class User(db.Model):
     __tablename__ = 'users'
     
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(80), nullable=False)
+    full_name = db.Column(db.String(100), nullable=False)
     email = db.Column(db.String(120), nullable=False)
     password_hash = db.Column(db.String(255), nullable=False)
     company_id = db.Column(db.Integer, db.ForeignKey('companies.id'), nullable=False)
@@ -41,10 +41,9 @@ class User(db.Model):
     last_login = db.Column(db.DateTime)
     is_active = db.Column(db.Boolean, default=True)
     
-    # Benzersizlik kısıtı - aynı şirkette aynı email/username olamaz
+    # Benzersizlik kısıtı - aynı şirkette aynı email olamaz
     __table_args__ = (
         db.UniqueConstraint('email', 'company_id', name='unique_email_per_company'),
-        db.UniqueConstraint('username', 'company_id', name='unique_username_per_company'),
     )
     
     def set_password(self, password):
@@ -58,7 +57,7 @@ class User(db.Model):
     def to_dict(self):
         return {
             'id': self.id,
-            'username': self.username,
+            'full_name': self.full_name,
             'email': self.email,
             'company_id': self.company_id,
             'role': self.role,

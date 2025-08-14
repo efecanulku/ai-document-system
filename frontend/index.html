@@ -3,245 +3,334 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Döküman Yönetim Sistemi</title>
+    <title>AI Döküman Yönetim Sistemi</title>
+    
+    <!-- Bootstrap 5 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
     <link href="css/style.css" rel="stylesheet">
 </head>
 <body>
-    <div id="app">
-        <!-- Navigation -->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-            <div class="container">
-                <a class="navbar-brand" href="#">
-                    <i class="fas fa-file-alt me-2"></i>
-                    Döküman Yönetim Sistemi
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#" onclick="showPage('dashboard')">
-                                <i class="fas fa-tachometer-alt me-1"></i>Dashboard
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#" onclick="showPage('documents')">
-                                <i class="fas fa-folder me-1"></i>Belgeler
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#" onclick="showPage('chat')">
-                                <i class="fas fa-robot me-1"></i>AI Asistan
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#" onclick="logout()">
-                                <i class="fas fa-sign-out-alt me-1"></i>Çıkış
-                            </a>
-                        </li>
-                    </ul>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#home">
+                <i class="fas fa-brain me-2"></i>
+                AI Döküman Sistemi
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Ana Sayfa</a>
+                    </li>
+                    <li class="nav-item" id="nav-dashboard" style="display: none;">
+                        <a class="nav-link" href="#dashboard">Dashboard</a>
+                    </li>
+                    <li class="nav-item" id="nav-documents" style="display: none;">
+                        <a class="nav-link" href="#documents">Belgeler</a>
+                    </li>
+                    <li class="nav-item" id="nav-chat" style="display: none;">
+                        <a class="nav-link" href="#chat">AI Sohbet</a>
+                    </li>
+                    <li class="nav-item" id="nav-login">
+                        <a class="nav-link btn btn-outline-light ms-2" href="#login">Giriş Yap</a>
+                    </li>
+                    <li class="nav-item" id="nav-logout" style="display: none;">
+                        <button class="btn btn-outline-light ms-2" onclick="logout()">
+                            <i class="fas fa-sign-out-alt me-1"></i>Çıkış
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Home Page -->
+        <section id="home" class="page active">
+            <div class="hero-section">
+                <div class="container">
+                    <div class="row align-items-center min-vh-100">
+                        <div class="col-lg-6">
+                            <h1 class="display-4 fw-bold text-primary mb-4">
+                                AI Destekli Döküman Yönetimi
+                            </h1>
+                            <p class="lead mb-4">
+                                Belgelerinizi yükleyin, AI ile sohbet edin ve anlık arama yapın. 
+                                Modern döküman yönetim deneyimi burada başlıyor.
+                            </p>
+                            <div class="d-flex gap-3">
+                                <a href="#login" class="btn btn-primary btn-lg">
+                                    <i class="fas fa-rocket me-2"></i>Başlayın
+                                </a>
+                                <a href="#features" class="btn btn-outline-primary btn-lg">
+                                    <i class="fas fa-info-circle me-2"></i>Özellikler
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="hero-animation">
+                                <i class="fas fa-brain text-primary"></i>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </nav>
+            
+            <!-- Features Section -->
+            <div id="features" class="container py-5">
+                <div class="row text-center mb-5">
+                    <div class="col-12">
+                        <h2 class="display-5 fw-bold">Güçlü Özellikler</h2>
+                        <p class="lead text-muted">Döküman yönetiminizi bir üst seviyeye taşıyın</p>
+                    </div>
+                </div>
+                
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <div class="feature-card h-100">
+                            <div class="feature-icon">
+                                <i class="fas fa-upload"></i>
+                            </div>
+                            <h4>Kolay Yükleme</h4>
+                            <p>PDF, Word, Excel ve resim dosyalarını sürükle-bırak ile yükleyin</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="feature-card h-100">
+                            <div class="feature-icon">
+                                <i class="fas fa-robot"></i>
+                            </div>
+                            <h4>AI Sohbet</h4>
+                            <p>Belgelerinizle doğal dilde sohbet edin, sorular sorun</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="feature-card h-100">
+                            <div class="feature-icon">
+                                <i class="fas fa-search"></i>
+                            </div>
+                            <h4>Akıllı Arama</h4>
+                            <p>Belge içeriklerinde gelişmiş arama ve filtreleme</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
         <!-- Login Page -->
-        <div id="loginPage" class="container-fluid vh-100 d-flex align-items-center justify-content-center bg-light">
-            <div class="row w-100">
-                <div class="col-md-6 col-lg-4 mx-auto">
-                    <div class="card shadow">
-                        <div class="card-body p-5">
+        <section id="login" class="page">
+            <div class="container">
+                <div class="row justify-content-center align-items-center min-vh-100">
+                    <div class="col-md-6 col-lg-4">
+                        <div class="auth-card">
                             <div class="text-center mb-4">
-                                <i class="fas fa-file-alt fa-3x text-primary mb-3"></i>
-                                <h3>Giriş Yap</h3>
-                                <p class="text-muted">Döküman Yönetim Sistemi</p>
+                                <i class="fas fa-brain text-primary fs-1 mb-3"></i>
+                                <h2>Giriş Yapın</h2>
+                                <p class="text-muted">Hesabınızla devam edin</p>
                             </div>
+                            
                             <form id="loginForm">
                                 <div class="mb-3">
-                                    <label for="email" class="form-label">E-posta</label>
-                                    <input type="email" class="form-control" id="email" required>
+                                    <label class="form-label">Email</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-envelope"></i>
+                                        </span>
+                                        <input type="email" class="form-control" id="loginEmail" required>
+                                    </div>
                                 </div>
+                                
                                 <div class="mb-3">
-                                    <label for="password" class="form-label">Şifre</label>
-                                    <input type="password" class="form-control" id="password" required>
+                                    <label class="form-label">Şifre</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-lock"></i>
+                                        </span>
+                                        <input type="password" class="form-control" id="loginPassword" required>
+                                    </div>
                                 </div>
+                                
                                 <button type="submit" class="btn btn-primary w-100 mb-3">
                                     <i class="fas fa-sign-in-alt me-2"></i>Giriş Yap
                                 </button>
                             </form>
+                            
                             <div class="text-center">
-                                <small class="text-muted">
-                                    Hesabınız yok mu? 
-                                    <a href="#" onclick="showRegister()">Kayıt ol</a>
-                                </small>
+                                <p class="text-muted">Hesabınız yok mu? 
+                                    <a href="#register" class="text-primary">Kayıt olun</a>
+                                </p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
 
         <!-- Register Page -->
-        <div id="registerPage" class="container-fluid vh-100 d-flex align-items-center justify-content-center bg-light" style="display: none;">
-            <div class="row w-100">
-                <div class="col-md-6 col-lg-5 mx-auto">
-                    <div class="card shadow">
-                        <div class="card-body p-5">
+        <section id="register" class="page">
+            <div class="container">
+                <div class="row justify-content-center align-items-center min-vh-100">
+                    <div class="col-md-6 col-lg-4">
+                        <div class="auth-card">
                             <div class="text-center mb-4">
-                                <i class="fas fa-user-plus fa-3x text-primary mb-3"></i>
-                                <h3>Kayıt Ol</h3>
-                                <p class="text-muted">Yeni hesap oluştur</p>
+                                <i class="fas fa-user-plus text-primary fs-1 mb-3"></i>
+                                <h2>Kayıt Olun</h2>
+                                <p class="text-muted">Yeni hesap oluşturun</p>
                             </div>
+                            
                             <form id="registerForm">
                                 <div class="mb-3">
-                                    <label for="companyName" class="form-label">Şirket Adı</label>
-                                    <input type="text" class="form-control" id="companyName" required>
+                                    <label class="form-label">Şirket Adı</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-building"></i>
+                                        </span>
+                                        <input type="text" class="form-control" id="registerCompany" required>
+                                    </div>
                                 </div>
+                                
                                 <div class="mb-3">
-                                    <label for="companyEmail" class="form-label">Şirket E-posta</label>
-                                    <input type="email" class="form-control" id="companyEmail" required>
+                                    <label class="form-label">Ad Soyad</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-user"></i>
+                                        </span>
+                                        <input type="text" class="form-control" id="registerName" required>
+                                    </div>
                                 </div>
+                                
                                 <div class="mb-3">
-                                    <label for="username" class="form-label">Kullanıcı Adı</label>
-                                    <input type="text" class="form-control" id="username" required>
+                                    <label class="form-label">Email</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-envelope"></i>
+                                        </span>
+                                        <input type="email" class="form-control" id="registerEmail" required>
+                                    </div>
                                 </div>
+                                
                                 <div class="mb-3">
-                                    <label for="userEmail" class="form-label">E-posta</label>
-                                    <input type="email" class="form-control" id="userEmail" required>
+                                    <label class="form-label">Şifre</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-lock"></i>
+                                        </span>
+                                        <input type="password" class="form-control" id="registerPassword" required>
+                                    </div>
                                 </div>
-                                <div class="mb-3">
-                                    <label for="registerPassword" class="form-label">Şifre</label>
-                                    <input type="password" class="form-control" id="registerPassword" required>
-                                </div>
+                                
                                 <button type="submit" class="btn btn-primary w-100 mb-3">
                                     <i class="fas fa-user-plus me-2"></i>Kayıt Ol
                                 </button>
                             </form>
+                            
                             <div class="text-center">
-                                <small class="text-muted">
-                                    Zaten hesabınız var mı? 
-                                    <a href="#" onclick="showLogin()">Giriş yap</a>
-                                </small>
+                                <p class="text-muted">Zaten hesabınız var mı? 
+                                    <a href="#login" class="text-primary">Giriş yapın</a>
+                                </p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <!-- Main Application -->
-        <div id="mainApp" style="display: none;">
-            <!-- Dashboard -->
-            <div id="dashboardPage" class="container mt-4">
-                <div class="row">
-                    <div class="col-12">
-                        <h2><i class="fas fa-tachometer-alt me-2"></i>Dashboard</h2>
-                        <div class="row mt-4">
-                            <div class="col-md-3 mb-3">
-                                <div class="card bg-primary text-white">
-                                    <div class="card-body">
-                                        <div class="d-flex justify-content-between">
-                                            <div>
-                                                <h4 id="totalDocuments">0</h4>
-                                                <p class="mb-0">Toplam Belge</p>
-                                            </div>
-                                            <i class="fas fa-file-alt fa-2x"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3 mb-3">
-                                <div class="card bg-success text-white">
-                                    <div class="card-body">
-                                        <div class="d-flex justify-content-between">
-                                            <div>
-                                                <h4 id="processedDocuments">0</h4>
-                                                <p class="mb-0">İşlenen Belge</p>
-                                            </div>
-                                            <i class="fas fa-check-circle fa-2x"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3 mb-3">
-                                <div class="card bg-info text-white">
-                                    <div class="card-body">
-                                        <div class="d-flex justify-content-between">
-                                            <div>
-                                                <h4 id="totalUsers">1</h4>
-                                                <p class="mb-0">Kullanıcı</p>
-                                            </div>
-                                            <i class="fas fa-users fa-2x"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3 mb-3">
-                                <div class="card bg-warning text-white">
-                                    <div class="card-body">
-                                        <div class="d-flex justify-content-between">
-                                            <div>
-                                                <h4 id="chatSessions">0</h4>
-                                                <p class="mb-0">Sohbet</p>
-                                            </div>
-                                            <i class="fas fa-comments fa-2x"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Documents Page -->
-            <div id="documentsPage" class="container mt-4" style="display: none;">
+        <!-- Dashboard Page -->
+        <section id="dashboard" class="page">
+            <div class="container-fluid py-4">
                 <div class="row">
                     <div class="col-12">
                         <div class="d-flex justify-content-between align-items-center mb-4">
-                            <h2><i class="fas fa-folder me-2"></i>Belgeler</h2>
-                            <button class="btn btn-primary" onclick="showUploadModal()">
-                                <i class="fas fa-plus me-2"></i>Belge Yükle
-                            </button>
+                            <h1><i class="fas fa-tachometer-alt me-2"></i>Dashboard</h1>
+                            <span id="userWelcome" class="text-muted"></span>
                         </div>
-                        
-                        <!-- Belge listesi -->
-                        <div class="card">
-                            <div class="card-body">
-                                <div id="documentsTable">
-                                    <div class="text-center py-5">
-                                        <i class="fas fa-folder-open fa-3x text-muted mb-3"></i>
-                                        <p class="text-muted">Henüz belge yüklenmemiş</p>
-                                    </div>
-                                </div>
+                    </div>
+                </div>
+                
+                <div class="row g-3 mb-4">
+                    <div class="col-md-3">
+                        <div class="stats-card">
+                            <div class="stats-icon bg-primary">
+                                <i class="fas fa-file-alt"></i>
+                            </div>
+                            <div class="stats-content">
+                                <h3 id="totalDocuments">0</h3>
+                                <p>Toplam Belge</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="stats-card">
+                            <div class="stats-icon bg-success">
+                                <i class="fas fa-upload"></i>
+                            </div>
+                            <div class="stats-content">
+                                <h3 id="todayUploads">0</h3>
+                                <p>Bugün Yüklenen</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="stats-card">
+                            <div class="stats-icon bg-info">
+                                <i class="fas fa-comments"></i>
+                            </div>
+                            <div class="stats-content">
+                                <h3 id="totalChats">0</h3>
+                                <p>AI Sohbetler</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="stats-card">
+                            <div class="stats-icon bg-warning">
+                                <i class="fas fa-database"></i>
+                            </div>
+                            <div class="stats-content">
+                                <h3 id="storageUsed">0 MB</h3>
+                                <p>Kullanılan Alan</p>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <!-- Chat Page -->
-            <div id="chatPage" class="container mt-4" style="display: none;">
+                
                 <div class="row">
-                    <div class="col-12">
-                        <h2><i class="fas fa-robot me-2"></i>AI Asistan</h2>
-                        <div class="card mt-4">
+                    <div class="col-md-8">
+                        <div class="card">
                             <div class="card-header">
-                                <h5 class="mb-0">Belgelerinizle Sohbet Edin</h5>
+                                <h5><i class="fas fa-chart-line me-2"></i>Son Aktiviteler</h5>
                             </div>
                             <div class="card-body">
-                                <div id="chatMessages" style="height: 400px; overflow-y: auto; border: 1px solid #dee2e6; padding: 15px; margin-bottom: 15px;">
-                                    <div class="text-center text-muted">
-                                        <i class="fas fa-robot fa-2x mb-3"></i>
-                                        <p>Merhaba! Belgelerinizle ilgili sorularınızı sorabilirsiniz.</p>
-                                    </div>
+                                <div id="recentActivities">
+                                    <p class="text-muted">Henüz aktivite yok</p>
                                 </div>
-                                <div class="input-group">
-                                    <input type="text" id="chatInput" class="form-control" placeholder="Sorunuzu yazın...">
-                                    <button class="btn btn-primary" onclick="sendMessage()">
-                                        <i class="fas fa-paper-plane"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5><i class="fas fa-bolt me-2"></i>Hızlı İşlemler</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="d-grid gap-2">
+                                    <a href="#documents" class="btn btn-primary">
+                                        <i class="fas fa-upload me-2"></i>Belge Yükle
+                                    </a>
+                                    <a href="#chat" class="btn btn-success">
+                                        <i class="fas fa-robot me-2"></i>AI ile Sohbet
+                                    </a>
+                                    <button class="btn btn-info" onclick="loadDashboard()">
+                                        <i class="fas fa-sync me-2"></i>Yenile
                                     </button>
                                 </div>
                             </div>
@@ -249,41 +338,149 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
+        </section>
+
+        <!-- Documents Page -->
+        <section id="documents" class="page">
+            <div class="container-fluid py-4">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <h1><i class="fas fa-folder me-2"></i>Belgeler</h1>
+                            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#uploadModal">
+                                <i class="fas fa-upload me-2"></i>Belge Yükle
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Search and Filter -->
+                <div class="row mb-4">
+                    <div class="col-md-6">
+                        <div class="input-group">
+                            <span class="input-group-text">
+                                <i class="fas fa-search"></i>
+                            </span>
+                            <input type="text" class="form-control" id="searchDocuments" placeholder="Belgeler arasında ara...">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <select class="form-select" id="filterDocuments">
+                            <option value="">Tüm Dosya Türleri</option>
+                            <option value="pdf">PDF</option>
+                            <option value="docx">Word</option>
+                            <option value="xlsx">Excel</option>
+                            <option value="image">Resim</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <!-- Documents Grid -->
+                <div id="documentsGrid" class="row g-3">
+                    <!-- Documents will be loaded here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Chat Page -->
+        <section id="chat" class="page">
+            <div class="container-fluid py-4">
+                <div class="row">
+                    <div class="col-12">
+                        <h1><i class="fas fa-robot me-2"></i>AI Sohbet</h1>
+                    </div>
+                </div>
+                
+                <div class="row mt-4">
+                    <div class="col-12">
+                        <div class="chat-container">
+                            <div class="chat-header">
+                                <div class="d-flex align-items-center">
+                                    <div class="chat-avatar">
+                                        <i class="fas fa-robot"></i>
+                                    </div>
+                                    <div>
+                                        <h5 class="mb-0">AI Asistan</h5>
+                                        <small class="text-muted">Belgelerinizle sohbet edin</small>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="chat-messages" id="chatMessages">
+                                <div class="message ai-message">
+                                    <div class="message-content">
+                                        <p>Merhaba! Belgelerinizle ilgili sorularınızı yanıtlamaya hazırım. Ne öğrenmek istiyorsunuz?</p>
+                                    </div>
+                                    <div class="message-time">Şimdi</div>
+                                </div>
+                            </div>
+                            
+                            <div class="chat-input">
+                                <form id="chatForm">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" id="chatInput" placeholder="Mesajınızı yazın..." required>
+                                        <button type="submit" class="btn btn-primary">
+                                            <i class="fas fa-paper-plane"></i>
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
     <!-- Upload Modal -->
     <div class="modal fade" id="uploadModal" tabindex="-1">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Belge Yükle</h5>
+                    <h5 class="modal-title">
+                        <i class="fas fa-upload me-2"></i>Belge Yükle
+                    </h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
-                    <form id="uploadForm" enctype="multipart/form-data">
-                        <div class="mb-3">
-                            <label for="fileInput" class="form-label">Dosya Seç</label>
-                            <input type="file" class="form-control" id="fileInput" 
-                                   accept=".pdf,.doc,.docx,.xls,.xlsx,.png,.jpg,.jpeg,.gif,.txt" multiple>
-                            <div class="form-text">
-                                PDF, Word, Excel, resim ve metin dosyaları desteklenir.
+                    <div class="upload-area" id="uploadArea">
+                        <div class="upload-content">
+                            <i class="fas fa-cloud-upload-alt mb-3"></i>
+                            <h4>Dosyaları Buraya Sürükleyin</h4>
+                            <p class="text-muted">veya dosya seçmek için tıklayın</p>
+                            <input type="file" id="fileInput" multiple accept=".pdf,.doc,.docx,.xls,.xlsx,.jpg,.jpeg,.png,.gif" style="display: none;">
+                            <button type="button" class="btn btn-primary" id="selectFilesBtn">
+                                <i class="fas fa-folder-open me-2"></i>Dosya Seç
+                            </button>
+                            <div id="selectedFilesInfo" class="mt-3" style="display: none;">
+                                <div class="alert alert-info">
+                                    <i class="fas fa-info-circle me-2"></i>
+                                    <span id="fileCount">0</span> dosya seçildi
+                                </div>
                             </div>
                         </div>
-                    </form>
+                    </div>
+                    
+                    <div id="uploadProgress" class="mt-3" style="display: none;">
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: 0%"></div>
+                        </div>
+                        <small class="text-muted mt-1">Yükleniyor...</small>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">İptal</button>
-                    <button type="button" class="btn btn-primary" onclick="uploadFiles()">Yükle</button>
+                    <button type="button" class="btn btn-primary" onclick="uploadFiles()" id="uploadBtn" disabled>
+                        <i class="fas fa-upload me-2"></i>Yükle
+                    </button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Scripts -->
+    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
     <script src="js/app.js"></script>
 </body>
 </html>
-
-
