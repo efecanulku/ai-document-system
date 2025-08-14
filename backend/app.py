@@ -28,7 +28,7 @@ db.init_app(app)
 os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
 
 # --- Blueprints ---
-from routes.auth_routes_simple import auth_bp
+from routes.auth_routes import auth_bp
 from routes.document_routes import documents_bp
 app.register_blueprint(auth_bp, url_prefix='/api/auth')
 app.register_blueprint(documents_bp, url_prefix='/api/documents')

@@ -5,7 +5,7 @@ import pytesseract
 from PIL import Image
 
 from models.database import db, Document, DocumentContent
-from .auth_routes_simple import token_required
+from .auth_routes import token_required
 
 documents_bp = Blueprint('documents_bp', __name__)
 
